@@ -5,7 +5,7 @@ import javafx.scene.shape.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class Fighter {
+ public abstract class Fighter {
 
     private String name;
     private int health;
@@ -43,6 +43,10 @@ abstract public class Fighter {
         return fighterColor;
     }
 
+    public Shape getFighterShape() {
+        return fighterShape;
+    }
+
     public boolean isAlive() {
         return health > 0;
     }
@@ -70,9 +74,62 @@ abstract public class Fighter {
         this.facingRight = facingRight;
     }
 
-
     public void addWeapon(Weapon weapon) {
         weapons.add(weapon);
     }
+
+     public void move(String direction, double minX, double maxX, double minY, double maxY) {
+         double newX = xPosition;
+         double newY = yPosition;
+
+         switch (direction.toUpperCase()) {
+             case "UP" -> newY -= speed;
+             case "DOWN" -> newY += speed;
+             case "LEFT" -> {
+                 newX -= speed;
+                 facingRight = false;
+             }
+             case "RIGHT" -> {
+                 newX += speed;
+                 facingRight = true;
+             }
+         }
+
+         if (fighterShape == null) {
+             if (newX >= minX && newX <= maxX) xPosition = newX;
+             if (newY >= minY && newY <= maxY) yPosition = newY;
+             return;
+         }
+
+         Bounds bounds = fighterShape.getBoundsInLocal();
+         if (newX >= minX && (newX + bounds.getWidth() <= maxX)) {
+             xPosition = newX;
+             fighterShape.setTranslateX(xPosition);
+         }
+         if (newY >= minY && (newY + bounds.getHeight() <= maxY)) {
+             yPosition = newY;
+             fighterShape.setTranslateY(yPosition);
+         }
+     }
+     public Projectile shoot() {
+         if (fighterShape == null || weapons.isEmpty()) return null;
+
+         Weapon weapon = getCurrentWeapon();
+         long currentTime = System.currentTimeMillis();
+         if (currentTime - lastShoot >= weapon.getCooldown()) {
+             lastShoot = currentTime;
+             double startOffset = facingRight ? fighterShape.getBoundsInLocal().getWidth() : 0;
+             return new Projectile(
+                     xPosition + startOffset,
+                     yPosition + fighterShape.getBoundsInLocal().getHeight() / 2,
+                     weapon.getProjectileSpeed(),
+                     weapon.getDamage(),
+                     facingRight,
+                     this
+             );
+         }
+         return null;
+     }
+     public Weapon getCurrentWeapon() { return weapons.get(currentWeaponIndex); }
 
 }
