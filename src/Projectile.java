@@ -22,5 +22,36 @@ public class Projectile{
         shape.setX(x);
         shape.setY(y);
     }
+    public void update() {
+        if (!active) return;
+        x += directionRight ? speed : -speed;
+        shape.setX(x);
+    }
+
+    public boolean isOutOfBounds() {
+        return x < 0 || x > 800;
+    }
+
+    public Rectangle getShape() {
+        return shape;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void deactivate() {
+        active = false;
+        shape.setVisible(false);
+    }
+
+    public Fighter getOwner() {
+        return owner;
+    }
 }
+
 
