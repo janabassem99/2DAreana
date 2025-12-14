@@ -1,3 +1,10 @@
+import javafx.geometry.Bounds;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
+
+import java.util.ArrayList;
+import java.util.List;
+
 abstract public class Fighter {
 
     private String name;
@@ -28,6 +35,18 @@ abstract public class Fighter {
         this.maxHp = maxHp;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public Color getFighterColor() {
+        return fighterColor;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
+    }
+
     public abstract void createShape();
 
     public double getX() {
@@ -41,6 +60,16 @@ abstract public class Fighter {
     public int getMaxHp() {
         return maxHp;
     }
+
+    public void decreaseHealth(int damage) {
+        health -= damage;
+        if (health < 0) health = 0;
+    }
+
+    public void setFacingRight(boolean facingRight) {
+        this.facingRight = facingRight;
+    }
+
 
     public void addWeapon(Weapon weapon) {
         weapons.add(weapon);
