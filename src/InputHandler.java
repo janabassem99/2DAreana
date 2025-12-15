@@ -35,4 +35,25 @@ public class InputHandler {
             gameController.addProjectile(p);
         }
     }
-}
+
+    public void handleMovement() {
+        if (gameController == null) return;
+
+        double arenaWidth = gameController.getArenawidth();
+        double arenaHeight = gameController.getArenaheight();
+        if (activeKeys.contains(KeyCode.W)) player1.move("UP", 0, arenaWidth, 0, arenaHeight);
+        if (activeKeys.contains(KeyCode.S)) player1.move("DOWN", 0, arenaWidth, 0, arenaHeight);
+        if (activeKeys.contains(KeyCode.A)) player1.move("LEFT", 0, arenaWidth, 0, arenaHeight);
+        if (activeKeys.contains(KeyCode.D)) player1.move("RIGHT", 0, arenaWidth, 0, arenaHeight);
+        if (activeKeys.contains(KeyCode.UP)) player2.move("UP", 0, arenaWidth, 0, arenaHeight);
+        if (activeKeys.contains(KeyCode.DOWN)) player2.move("DOWN", 0, arenaWidth, 0, arenaHeight);
+        if (activeKeys.contains(KeyCode.LEFT)) player2.move("LEFT", 0, arenaWidth, 0, arenaHeight);
+        if (activeKeys.contains(KeyCode.RIGHT)) player2.move("RIGHT", 0, arenaWidth, 0, arenaHeight);
+    }
+
+    public void setGameController(GameManager gm) {
+        this.gameController = gm;
+    }
+
+
+    }
