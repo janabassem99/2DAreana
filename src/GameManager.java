@@ -40,3 +40,31 @@ public class GameManager {
         this.projectiles = new ArrayList<>();
         this.onPlayAgain = onPlayAgain;
     }
+    if (player1.getFighterShape() != null){
+        player1.getFighterShape().setTranslateX(player1.getX());
+        player1.getFighterShape().setTranslateY(player1.getY());
+    }
+        if (player2.getFighterShape() != null){
+        player2.getFighterShape().setTranslateX(player2.getX());
+        player2.getFighterShape().setTranslateY(player2.getY());
+    }
+
+        gamePane.getChildren().addAll(player1.getFighterShape(), player2.getFighterShape());
+
+        hp1.setDisplaySize(48, 48);
+        hp1.setLayoutX(20);
+        hp1.setLayoutY(16);
+        hp1.setProgress((double) player1.getHealth() / player1.getMaxHp());
+
+        hp2.setDisplaySize(48, 48);
+        hp2.setLayoutX(arenawidth - 68);
+        hp2.setLayoutY(16);
+        hp2.setProgress((double) player2.getHealth() / player2.getMaxHp());
+
+        gamePane.getChildren().addAll(hp1, hp2);
+
+    startLoop();
+        if (this.input != null) {
+        this.input.setGameController(this);
+    }
+}
