@@ -132,4 +132,10 @@ import java.util.List;
      }
      public Weapon getCurrentWeapon() { return weapons.get(currentWeaponIndex); }
 
+     public void switchWeapon() {
+         if (weapons.size() > 1) {
+             currentWeaponIndex = (currentWeaponIndex + 1) % weapons.size();
+             System.out.println(name + " switched to " + getCurrentWeapon().getName());
+         }
+     }
 }
