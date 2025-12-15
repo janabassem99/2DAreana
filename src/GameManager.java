@@ -41,3 +41,4 @@ public class GameManager {
         this.arenaheight = arenaheight;
         this.projectiles = new ArrayList<>();
         this.onPlayAgain = onPlayAgain;
+    }
