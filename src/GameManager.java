@@ -67,4 +67,39 @@ public class GameManager {
         if (this.input != null) {
         this.input.setGameController(this);
     }
+public Pane getGamePane() {
+        return gamePane;
+    }
+
+    public InputHandler getInput() {
+        return input;
+    }
+
+    public double getArenawidth() {
+        return arenawidth;
+    }
+
+    public double getArenaheight() {
+        return arenaheight;
+    }
+
+    private void startLoop() {
+        gameLoop = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                update();
+            }
+        };
+        gameLoop.start();
+    }
+
+    private void update() {
+        if (gameOver) return;
+
+        input.handleMovement();
+        updateProjectiles();
+        checkCollisions();
+        updateHealthBars();
+        checkWinner();
+    }
 }
