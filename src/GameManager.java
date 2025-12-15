@@ -10,7 +10,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.geometry.Pos;
 import javafx.scene.text.Font;
-import javafx.scene.effect.DropShadow;
 
 import java.util.ArrayList;
 import java.util.List;
