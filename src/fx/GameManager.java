@@ -127,6 +127,7 @@ public Pane getGamePane() {
         }
     }
 
+
     private void checkCollisions() {
         for (Projectile p : projectiles) {
             if (!p.isActive()) continue;
