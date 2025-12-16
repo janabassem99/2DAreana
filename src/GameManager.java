@@ -145,4 +145,48 @@ public Pane getGamePane() {
             }
         }
     }
+    private void updateHealthBars() {
+        double p1 = Math.max(0.0, Math.min(1.0, (double) player1.getHealth() / player1.getMaxHp()));
+        double p2 = Math.max(0.0, Math.min(1.0, (double) player2.getHealth() / player2.getMaxHp()));
+        hp1.setProgress(p1);
+        hp2.setProgress(p2);
+    }
+
+    private void checkWinner() {
+        if (!player1.isAlive()) {
+            showWinner("Player 2 Wins!");
+        } else if (!player2.isAlive()) {
+            showWinner("Player 1 Wins!");
+        }
+    }
+
+    private void showWinner(String text) {
+        gameOver = true;
+        if (gameLoop != null) gameLoop.stop();
+        Platform.runLater(() -> {
+            StackPane overlay = new StackPane();
+            overlay.setPrefSize(arenawidth, arenaheight);
+
+            Rectangle bg = new Rectangle(arenawidth, arenaheight, Color.rgb(0, 0, 0, 0.65));
+            bg.setArcWidth(8);
+            bg.setArcHeight(8);
+            bg.setStroke(Color.WHITE);
+            bg.setStrokeWidth(0.5);
+
+            Label winnerLabel = new Label(text);
+            winnerLabel.setTextFill(Color.WHITE);
+            winnerLabel.setFont(Font.font(36));
+            winnerLabel.setStyle("-fx-font-weight: bold;");
+
+            Button playBtn = new Button("Play Again");
+            Button exitBtn = new Button("Exit");
+            playBtn.setStyle("-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;");
+            exitBtn.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;");
+
+            VBox box = new VBox(15, winnerLabel, playBtn, exitBtn);
+            box.setAlignment(Pos.CENTER);
+            box.setStyle("-fx-padding: 20; -fx-background-color: rgba(30,30,30,0.8); -fx-background-radius: 8;");
+            box.setEffect(new DropShadow(10, Color.color(0,0,0,0.6)));
+
 }
+
