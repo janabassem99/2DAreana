@@ -152,6 +152,7 @@ public Pane getGamePane() {
             }
         }
     }
+
     private void updateHealthBars() {
         double p1 = Math.max(0.0, Math.min(1.0, (double) player1.getHealth() / player1.getMaxHp()));
         double p2 = Math.max(0.0, Math.min(1.0, (double) player2.getHealth() / player2.getMaxHp()));
