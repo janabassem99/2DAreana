@@ -40,7 +40,7 @@ public class GameManager {
         this.projectiles = new ArrayList<>();
         this.onPlayAgain = onPlayAgain;
     }
-    if (player1.getFighterShape() != null){
+    if (player1.getFighterShape()!= null){
         player1.getFighterShape().setTranslateX(player1.getX());
         player1.getFighterShape().setTranslateY(player1.getY());
     }
@@ -187,6 +187,49 @@ public Pane getGamePane() {
             box.setAlignment(Pos.CENTER);
             box.setStyle("-fx-padding: 20; -fx-background-color: rgba(30,30,30,0.8); -fx-background-radius: 8;");
             box.setEffect(new DropShadow(10, Color.color(0,0,0,0.6)));
+            overlay.getChildren().addAll(bg, box);
+            overlay.setMouseTransparent(false);
 
+            overlay.setOpacity(0);
+            FadeTransition fade = new FadeTransition(Duration.millis(350), overlay);
+            fade.setFromValue(0);
+            fade.setToValue(1.0);
+            fade.play();
+
+            gamePane.getChildren().add(overlay);
+            overlay.toFront();
+
+            if (input != null) {
+                input.setGameController(null);
+            }
+
+            playBtn.setOnAction(e -> {
+                cleanupAfterGame();
+                if (onPlayAgain != null) onPlayAgain.run();
+            });
+
+            exitBtn.setOnAction(e -> {
+                cleanupAfterGame();
+                Platform.exit();
+            });
+        });
+    }
+    private void cleanupAfterGame() {
+        gameOver = true;
+        if (gameLoop != null) {
+            gameLoop.stop();
+        }
+        for (Projectile p : new ArrayList<>(projectiles)) {
+            p.deactivate();
+            if (p.getShape() != null) gamePane.getChildren().remove(p.getShape());
+        }
+        projectiles.clear();
+
+        if (input != null) {
+            input.setGameController(null);
+        }
+    }
 }
+
+
 
