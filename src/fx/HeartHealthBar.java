@@ -35,5 +35,12 @@ public class HeartHealthBar extends StackPane {
         this.getChildren().addAll(fillShape, outline);
         setPrefSize(BASE_W, BASE_H);
     }
+    public void setProgress(double value) {
+        this.progress = Math.max(0.0, Math.min(1.0, value));
+        double clipW = BASE_W * this.progress;
+        clipRect.setWidth(clipW);
+    }
+    public double getProgress() { return progress;}
 }
+
 
