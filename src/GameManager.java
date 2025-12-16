@@ -48,7 +48,6 @@ public class GameManager {
         player2.getFighterShape().setTranslateX(player2.getX());
         player2.getFighterShape().setTranslateY(player2.getY());
     }
-
         gamePane.getChildren().addAll(player1.getFighterShape(), player2.getFighterShape());
 
         hp1.setDisplaySize(48, 48);
@@ -60,7 +59,6 @@ public class GameManager {
         hp2.setLayoutX(arenawidth - 68);
         hp2.setLayoutY(16);
         hp2.setProgress((double) player2.getHealth() / player2.getMaxHp());
-
         gamePane.getChildren().addAll(hp1, hp2);
 
     startLoop();
