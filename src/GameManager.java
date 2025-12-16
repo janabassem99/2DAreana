@@ -100,4 +100,49 @@ public Pane getGamePane() {
         updateHealthBars();
         checkWinner();
     }
+    public void addProjectile(Projectile p) {
+        if (p == null || p.getShape() == null) return;
+        projectiles.add(p);
+        gamePane.getChildren().add(p.getShape());
+    }
+
+    private void updateProjectiles() {
+        List<Projectile> toRemove = new ArrayList<>();
+        for (Projectile p : projectiles) {
+            p.update();
+            if (!p.isActive() || p.isOutOfBounds()) {
+                toRemove.add(p);
+            }
+        }
+        for (Projectile p : toRemove) {
+            gamePane.getChildren().remove(p.getShape());
+            projectiles.remove(p);
+        }
+    }
+
+    private void checkCollisions() {
+        for (Projectile p : projectiles) {
+            if (!p.isActive()) continue;
+            Fighter owner = p.getOwner();
+            if (owner == player1) {
+                if (p.getShape().getBoundsInParent().intersects(player2.getFighterShape().getBoundsInParent())) {
+                    player2.decreaseHealth(p.getDamage());
+                    p.deactivate();
+                }
+            } else if (owner == player2) {
+                if (p.getShape().getBoundsInParent().intersects(player1.getFighterShape().getBoundsInParent())) {
+                    player1.decreaseHealth(p.getDamage());
+                    p.deactivate();
+                }
+            } else {
+                if (p.getShape().getBoundsInParent().intersects(player1.getFighterShape().getBoundsInParent())) {
+                    player1.decreaseHealth(p.getDamage());
+                    p.deactivate();
+                } else if (p.getShape().getBoundsInParent().intersects(player2.getFighterShape().getBoundsInParent())) {
+                    player2.decreaseHealth(p.getDamage());
+                    p.deactivate();
+                }
+            }
+        }
+    }
 }
