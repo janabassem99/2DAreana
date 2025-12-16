@@ -34,4 +34,4 @@ public class HeartHealthBar extends StackPane {
         this.getChildren().addAll(fillShape, outline);
         setPrefSize(BASE_W, BASE_H);
     }
-}
+
