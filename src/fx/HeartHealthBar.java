@@ -41,6 +41,14 @@ public class HeartHealthBar extends StackPane {
         clipRect.setWidth(clipW);
     }
     public double getProgress() { return progress;}
+
+    public void setDisplaySize(double width, double height) {
+        double sx = width / BASE_W;
+        double sy = height / BASE_H;
+        setScaleX(sx);
+        setScaleY(sy);
+        setPrefSize(width, height);
+    }
 }
 
 
