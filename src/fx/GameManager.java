@@ -1,3 +1,7 @@
+package fx;
+
+import base.Fighter;
+import base.Projectile;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;

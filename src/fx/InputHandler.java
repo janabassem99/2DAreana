@@ -1,3 +1,7 @@
+package fx;
+
+import base.Fighter;
+import base.Projectile;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
