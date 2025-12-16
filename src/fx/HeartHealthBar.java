@@ -24,4 +24,14 @@ public class HeartHealthBar extends StackPane {
         outline.setContent(heartPath);
         outline.setFill(Color.TRANSPARENT);
         outline.setStroke(Color.DARKRED);
-        outline.setStrokeWidth(1.8);}}
+        outline.setStrokeWidth(1.8);
+        fillShape = new SVGPath();
+        fillShape.setContent(heartPath);
+        fillShape.setFill(fillColor);
+        fillShape.setStroke(Color.TRANSPARENT);
+        clipRect = new Rectangle(0, 0, BASE_W * progress, BASE_H);
+        fillShape.setClip(clipRect);
+        this.getChildren().addAll(fillShape, outline);
+        setPrefSize(BASE_W, BASE_H);
+    }
+}
