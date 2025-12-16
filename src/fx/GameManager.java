@@ -45,7 +45,7 @@ public class GameManager {
         this.arenaheight = arenaheight;
         this.projectiles = new ArrayList<>();
         this.onPlayAgain = onPlayAgain;
-    }
+
     if (player1.getFighterShape()!= null){
         player1.getFighterShape().setTranslateX(player1.getX());
         player1.getFighterShape().setTranslateY(player1.getY());
@@ -70,6 +70,7 @@ public class GameManager {
     startLoop();
         if (this.input != null) {
         this.input.setGameController(this);
+    }
     }
 public Pane getGamePane() {
         return gamePane;
