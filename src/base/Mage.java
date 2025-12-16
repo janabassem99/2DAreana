@@ -1,10 +1,12 @@
+package base;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 public class Mage extends Fighter {
 
     public Mage(double x, double y) {
-        super("Mage", 90, x, y, 4.5, true, 0, Color.MEDIUMPURPLE, 90);
+        super("base.Mage", 90, x, y, 4.5, true, 0, Color.MEDIUMPURPLE, 90);
         addWeapon(new MagicWand());
         addWeapon(new Weapon("Magic Bolt", 10, 8.0, 450L));
         addWeapon(new Weapon("Fireball", 25, 5.0, 1200L));
