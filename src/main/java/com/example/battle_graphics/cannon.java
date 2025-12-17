@@ -1,4 +1,4 @@
-package com.example.battle_graphics.base;
+package com.example.battle_graphics;
 
 public class cannon extends Weapon {
     public cannon() {

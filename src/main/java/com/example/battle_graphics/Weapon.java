@@ -1,4 +1,4 @@
-package base;
+package com.example.battle_graphics;
 
 public class Weapon {
 

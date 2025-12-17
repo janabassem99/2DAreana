@@ -1,4 +1,4 @@
-package com.example.battle_graphics.base;
+package com.example.battle_graphics;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;

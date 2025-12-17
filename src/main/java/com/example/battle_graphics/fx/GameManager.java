@@ -1,6 +1,6 @@
 package com.example.battle_graphics.fx;
-import com.example.battle_graphics.base.Fighter;
-import com.example.battle_graphics.base.Projectile;
+import com.example.battle_graphics.Fighter;
+import com.example.battle_graphics.Projectile;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;

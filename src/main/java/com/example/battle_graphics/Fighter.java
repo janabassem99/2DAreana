@@ -1,4 +1,4 @@
-package base;
+package com.example.battle_graphics;
 
 import javafx.geometry.Bounds;
 import javafx.scene.paint.Color;

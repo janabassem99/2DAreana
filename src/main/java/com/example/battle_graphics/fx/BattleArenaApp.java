@@ -1,5 +1,5 @@
 package com.example.battle_graphics.fx;
-import com.example.battle_graphics.base.*;
+import com.example.battle_graphics.*;
 import javafx.stage.Stage;
 
 public class BattleArenaApp extends javafx.application.Application {

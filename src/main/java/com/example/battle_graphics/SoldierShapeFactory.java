@@ -1,4 +1,4 @@
-package base;
+package com.example.battle_graphics;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.shape.Shape;
