@@ -91,7 +91,6 @@ public class BattleArenaApp extends javafx.application.Application {
         root.setPadding(new Insets(40));
         root.setStyle("-fx-background-color: linear-gradient(#2c3e50, #1a252f);");
 
-        primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
-    }
+        primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));}
 
 }
