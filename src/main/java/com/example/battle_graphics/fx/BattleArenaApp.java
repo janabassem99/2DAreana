@@ -1,5 +1,6 @@
 package com.example.battle_graphics.fx;
 import com.example.battle_graphics.*;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -93,4 +94,36 @@ public class BattleArenaApp extends javafx.application.Application {
 
         primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));}
 
-}
+    private Scene buildSelectionScene() {
+
+        ComboBox<String> p1Select = new ComboBox<>();
+        p1Select.getItems().addAll("Warrior", "Mage", "Archer");
+        p1Select.setValue("Warrior");
+
+        ComboBox<String> p2Select = new ComboBox<>();
+        p2Select.getItems().addAll("Warrior", "Mage", "Archer");
+        p2Select.setValue("Archer");
+
+        Label titleLabel = new Label("🎮 Select Fighters");
+        titleLabel.setFont(Font.font("Arial", 22));
+        titleLabel.setTextFill(Color.web("#ffffff"));
+
+        Label p1Label = new Label("Player 1:");
+        p1Label.setTextFill(Color.web("#ffffff"));
+        Label p2Label = new Label("Player 2:");
+        p2Label.setTextFill(Color.web("#ffffff"));
+
+        Button startButton = new Button("Start Battle");
+        startButton.setStyle("-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold;");
+
+        startButton.setOnAction(e -> {
+            System.out.println("Start Battle pressed (selection)");
+            Fighter p1 = createFighter(p1Select.getValue(), 100, HEIGHT / 2);
+            Fighter p2 = createFighter(p2Select.getValue(), WIDTH - 150, HEIGHT / 2);
+
+
+            p2.setFacingRight(false);
+
+            primaryStage.setScene(createGameScene(p1, p2));
+        });
+    1
