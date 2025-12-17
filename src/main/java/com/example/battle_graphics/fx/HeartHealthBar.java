@@ -1,4 +1,4 @@
-package fx;
+package com.example.battle_graphics.fx;
 
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;

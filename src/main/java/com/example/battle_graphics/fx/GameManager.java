@@ -1,7 +1,6 @@
-package fx;
-
-import base.Fighter;
-import base.Projectile;
+package com.example.battle_graphics.fx;
+import com.example.battle_graphics.base.Fighter;
+import com.example.battle_graphics.base.Projectile;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
@@ -16,9 +15,9 @@ import javafx.geometry.Pos;
 import javafx.scene.text.Font;
 import javafx.scene.effect.DropShadow;
 import javafx.util.Duration;
-
 import java.util.ArrayList;
 import java.util.List;
+
 public class GameManager {
 
     private Fighter player1;

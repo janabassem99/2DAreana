@@ -1,4 +1,4 @@
-package fx;
+package com.example.battle_graphics.fx;
 
 import base.Fighter;
 import base.Projectile;
