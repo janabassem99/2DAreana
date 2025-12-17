@@ -63,5 +63,35 @@ public class BattleArenaApp extends javafx.application.Application {
 
         return new Scene(root, WIDTH, HEIGHT);
     }
+    private void buildHowToPlay(){
+        Label header = new Label("How to Play");
+        header.setFont(Font.font("Arial", 28));
+        header.setTextFill(Color.WHITE);
+
+        Label lines = new Label(
+                "Player 1: Move with WASD, Shoot = F, Switch Weapon = Q\n" +
+                        "Player 2: Move with Arrow Keys, Shoot = L, Switch Weapon = E\n\n" +
+                        "Each fighter has multiple weapons — switch to find the best one.\n" +
+                        "First player to reduce the opponent's health to 0 wins."
+        );
+        lines.setFont(Font.font("Arial", 14));
+        lines.setTextFill(Color.web("#e9e9e9"));
+
+        Button back = new Button("Back");
+        back.setStyle("-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;");
+        back.setOnAction(e -> primaryStage.setScene(createTitleScene()));
+
+        VBox box = new VBox(12, header, lines, back);
+        box.setAlignment(Pos.CENTER);
+        box.setPadding(new Insets(24));
+        box.setStyle("-fx-background-color: rgba(20,20,20,0.6); -fx-background-radius: 8;");
+
+        VBox root = new VBox(10, box);
+        root.setAlignment(Pos.CENTER);
+        root.setPadding(new Insets(40));
+        root.setStyle("-fx-background-color: linear-gradient(#2c3e50, #1a252f);");
+
+        primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
+    }
 
 }
