@@ -1,6 +1,7 @@
 package com.example.battle_graphics.fx;
 import com.example.battle_graphics.*;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -64,7 +65,8 @@ public class BattleArenaApp extends javafx.application.Application {
 
         return new Scene(root, WIDTH, HEIGHT);
     }
-    private void buildHowToPlay(){
+
+    private void buildHowToPlay() {
         Label header = new Label("How to Play");
         header.setFont(Font.font("Arial", 28));
         header.setTextFill(Color.WHITE);
@@ -92,7 +94,8 @@ public class BattleArenaApp extends javafx.application.Application {
         root.setPadding(new Insets(40));
         root.setStyle("-fx-background-color: linear-gradient(#2c3e50, #1a252f);");
 
-        primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));}
+        primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
+    }
 
     private Scene buildSelectionScene() {
 
@@ -126,4 +129,27 @@ public class BattleArenaApp extends javafx.application.Application {
 
             primaryStage.setScene(createGameScene(p1, p2));
         });
-    1
+
+        VBox controls = new VBox(12);
+        controls.setAlignment(Pos.CENTER);
+        HBox p1Row = new HBox(8, p1Label, p1Select);
+        p1Row.setAlignment(Pos.CENTER);
+        HBox p2Row = new HBox(8, p2Label, p2Select);
+        p2Row.setAlignment(Pos.CENTER);
+        controls.getChildren().addAll(p1Row, p2Row, startButton);
+        VBox root = new VBox(25, titleLabel, controls);
+        root.setAlignment(Pos.CENTER);
+        root.setPadding(new Insets(40));
+        root.setStyle("-fx-background-color: linear-gradient(#2c3e50, #1a252f);");
+        return new Scene(root, WIDTH, HEIGHT);
+    }
+
+    private Fighter createFighter(String type, double x, double y) {
+        switch (type) {
+            case "Mage": return new Mage(x, y);
+            case "Archer": return new Archer(x, y);
+            default: return new Warrior(x, y);
+        }
+    }
+
+}
