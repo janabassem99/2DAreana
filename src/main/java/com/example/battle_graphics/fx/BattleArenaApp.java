@@ -1,7 +1,9 @@
 package com.example.battle_graphics.fx;
 import com.example.battle_graphics.*;
+import javafx.application.Platform;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -152,4 +154,42 @@ public class BattleArenaApp extends javafx.application.Application {
         }
     }
 
+    private Scene createGameScene(Fighter p1, Fighter p2) {
+        p1.createShape();
+        p2.createShape();
+        Pane gamePane = new Pane();
+        gamePane.setPrefSize(WIDTH, HEIGHT);
+        javafx.scene.shape.Line midline = new javafx.scene.shape.Line(WIDTH / 2, 0, WIDTH / 2, HEIGHT);
+        midline.setStroke(Color.RED);
+        midline.setStrokeWidth(2);
+        gamePane.getChildren().addAll(midline);
+        HeartHealthBar hp1 = new HeartHealthBar(Color.RED);
+        HeartHealthBar hp2 = new HeartHealthBar(Color.RED);
+        InputHandler handler = new InputHandler(p1, p2, null);
+        GameManager manager = new GameManager(
+                p1, p2,
+                gamePane,
+                handler,
+                hp1,
+                hp2,
+                WIDTH,
+                HEIGHT,
+                () -> {
+                    Platform.runLater(() -> {
+                        primaryStage.setScene(buildSelectionScene());
+                    });
+                }
+        );
+
+
+        handler.setGameController(manager);
+        Scene scene = new Scene(gamePane, WIDTH, HEIGHT);
+        scene.setOnKeyPressed(handler::handleKeyPressed);
+        scene.setOnKeyReleased(handler::handleKeyReleased);
+        gamePane.setFocusTraversable(true);
+        gamePane.requestFocus();
+
+        return scene;
+    }
 }
+
