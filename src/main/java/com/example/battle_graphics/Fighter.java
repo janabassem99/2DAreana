@@ -15,11 +15,11 @@ import java.util.List;
     private double speed;
     private  double xPosition, yPosition;
     private boolean facingRight;
-    private Shape fighterShape;
+    protected Shape fighterShape;
     private Color fighterColor;
     private List<Weapon> weapons = new ArrayList<>();
     private int currentWeaponIndex = 0;
-    private long lastShoot;
+    protected long lastShoot;
 
     public Fighter() {
     }
