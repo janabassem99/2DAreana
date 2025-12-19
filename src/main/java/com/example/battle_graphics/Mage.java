@@ -15,8 +15,8 @@ public class Mage extends Fighter {
     @Override
     public void createShape() {
         Shape s = SoldierShapeFactory.createSoldier(getFighterColor(), getxPosition(), getyPosition());
-        this.fighterShape = s;
-        fighterShape.setScaleX(3.5);
-        fighterShape.setScaleY(2.5);
+        s=this.getFighterShape() ;
+        getFighterShape().setScaleX(3.5);
+        getFighterShape().setScaleY(2.5);
     }
 }
