@@ -2,10 +2,10 @@ package com.example.battle_graphics;
 
 public class Weapon {
 
-    protected String name;
-    protected int damage;
+    private String name;
+    private int damage;
     private double projectileSpeed;
-    protected long cooldown;
+    private long cooldown;
 
     public Weapon(String name, int damage, double projectilespeed, Long cooldown){
         this.name=name;

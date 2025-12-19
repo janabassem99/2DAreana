@@ -13,8 +13,8 @@ import java.util.List;
     private int health;
     private int maxHp;
     private double speed;
-    protected double xPosition, yPosition;
-    protected boolean facingRight;
+    private  double xPosition, yPosition;
+    private boolean facingRight;
     protected Shape fighterShape;
     private Color fighterColor;
     private List<Weapon> weapons = new ArrayList<>();
@@ -37,7 +37,23 @@ import java.util.List;
         this.maxHp = maxHp;
     }
 
-    public int getHealth() {
+     public double getyPosition() {
+         return yPosition;
+     }
+
+     public void setyPosition(double yPosition) {
+         this.yPosition = yPosition;
+     }
+
+     public double getxPosition() {
+         return xPosition;
+     }
+
+     public void setxPosition(double xPosition) {
+         this.xPosition = xPosition;
+     }
+
+     public int getHealth() {
         return health;
     }
 
